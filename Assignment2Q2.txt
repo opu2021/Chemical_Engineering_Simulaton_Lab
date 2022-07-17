@@ -1,0 +1,28 @@
+h1 = [8.27 24.75 41.30 58.10 73.51];
+h2 = [6.52 19.58 32.70 45.75 58.78];
+dp1 = [10.10 26.89 37.01 43.21 47.80];
+dp2 = [6.40 23.34 32.18 38.32 42.81];
+RH = [10 30 50 70 90];
+
+RHn = [58.4];
+
+% h1 at RH = 58.4
+a1 = spline(RH,h1,RHn);
+%h2 at RH = 58.4
+b1 = spline(RH,h2,RHn);
+% dp1 at RH = 58.4
+a2 = spline(RH,dp1,RHn);
+% dp2 at RH = 58.4
+b2 = spline(RH,dp2,RHn);
+
+m = [a1 b1];
+n = [a2 b2];
+% array of given Temp
+o = [51 44];
+
+Value_of_new_temp = 46.8;
+
+%Final value of h
+h = spline(o,m,Value_of_new_temp);
+%Final value of dp
+dp = spline(o,n,Value_of_new_temp);

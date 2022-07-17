@@ -1,0 +1,25 @@
+x=[1.2; 1.6; 3.2; 4.3; 5.8; 7.6; 8.8];
+y=[0.06; 0.12; 0.24; 0.27; 0.33; 0.34; 0.34];
+x1=-(x.*y);
+c=lsqcurvefit(@(c,x) c(1) + c(2)*x +c(3)*x1,[1,1,1],x,y);
+a=c(2)./c(3);
+b=1./c(3);
+%RED COLOUR =REGRESSION
+
+plot(x,y,'ro')
+hold on
+plot(x,(a*x)./(b+x),"LineWidth",2);
+title("REGRESSION AND INTERPOLATION");
+xlabel('SUBSTRATE CONCENTRATION');
+ylabel('REACTION RATE');
+%BLUE COLOUR =INTERPOLATION
+
+
+xI=[1:0.5:9];
+yI=pchip(x,y,xI);
+plot(x,y,'*');
+hold on
+plot(xI,yI,'--b',"LineWidth",3);
+legend({'DATA POINT','REGRESSION','DATA POINT','INTERPOLATION'})
+
+% Yes value at x = 2 is equal for both regration and interplolation by seeing graph 
