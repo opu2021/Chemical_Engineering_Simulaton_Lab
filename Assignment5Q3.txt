@@ -1,0 +1,27 @@
+% question number 3 answer-
+ES = 4;
+DS = 2;
+L = 0.5;
+Z1 = 0.5;
+Z2 = 10 ;
+% displaying the different value of integration using different segment. 
+for ii = 1:60
+ p = 9.5/ii; 
+ Z = Z1:p:Z2;
+Itrap = [trapz(Z , exp(-L./Z + 2* ES * ((DS./Z).^6 - (DS./Z).^12) -1))];
+disp(ii)
+disp(Itrap)
+end
+
+% plot Itrap VS n;
+n = [1:5:60];
+Itrap = [1.6631 4.3234 4.5915 4.1013 3.88327 3.7090 3.7442 3.7995 3.8108 3.7982 3.7912 3.7933 ];
+plot(n,Itrap,"LineWidth",3)
+xlabel("number of segments (n) ");
+ylabel("integrating value obtain trapz fun.(Itrap)");
+
+% As from graph first Integration increases with increases with n then
+% decreases then becomes constant.
+
+%value of integration with quad function
+Iqu = quad(@(Z) exp(-L./Z + 2* ES * ((DS./Z).^6 - (DS./Z).^12) -1), 0.5,10 );

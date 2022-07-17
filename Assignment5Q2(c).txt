@@ -1,0 +1,28 @@
+function F =calculate3(x)
+A = x(1);
+K = x(2);
+
+% PATIENT B
+VLB = 40;
+AGEB = [25 40 41 42 43];
+PB =[11 30 32 33 35];
+IB = trapz(AGEB,(PB-13));
+
+% PATIENT C
+VLC = 30;
+AGEC = [25 40 50 60 80];
+PC =[13 14 15 17 19];
+IC = trapz(AGEC,(PC-13));
+
+F(1) = log(VLB./A) - K*IB;
+
+F(2) = log(VLC./A) - K*IC;
+
+
+%Calculation of K and A using Patient B and Patient C-
+xo = [3 0.007]';
+x = fsolve(@(x) calculate3(x),xo);
+A = x(1);
+K = x(2);
+% A= 2.8004
+% K= 0.0156
