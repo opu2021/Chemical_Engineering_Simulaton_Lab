@@ -1,0 +1,11 @@
+format short
+truevalue=0.006737947
+x=5;
+term=1;
+solu=1
+for i=1:19
+    term=(-1).^i*x.^i./factorial(i);
+    solu(i+1)=solu(i)+term;
+    truerror=(truevalue-solu)*100 / truevalue;
+     approxerror(i+1)=(finvalue(i+1)-finvalue(i))*100 /finvalue(i+1);
+end

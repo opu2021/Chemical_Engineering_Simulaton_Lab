@@ -1,0 +1,11 @@
+format long
+truevalue =sin(pi/3);
+x=pi/3;
+term=x;
+finalvalue=x;
+for i=1:10
+     term=(-1).^i*x.^(2*i+1)./factorial(2*i+1);
+     finalvalue(i+1)=finalvalue(i)+term;
+     truerror(i+1)=(finalvalue(i+1)-finalvalue(i))*100./finalvalue(i+1);
+    approxerror=(truevalue-finalvalue)*100/truevalue;
+end
