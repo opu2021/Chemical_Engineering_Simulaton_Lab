@@ -1,0 +1,26 @@
+%CALCULATION OF CA, T, TJ-
+A=[312        0        0
+   4261.56  -4.06     2.86
+     0       25.57    -28.57
+    ];
+B=[12; -330; -750];
+X=A\B;
+
+CA=X(1);
+T=X(2);
+TJ=X(3);
+
+x=[250:4:315];
+plot(x,0.2*x+329,'b',"LineWidth",3); 
+title("reactor temperature(T) vs coolant temperature(TJint)");
+ylabel('reactor temperature(T)');
+xlabel('coolant temperature(TJint)');
+
+%CALUCLATE NEW TEMPERATURE OF REACTOR
+
+A1=[312        0
+    4261.56  -1.2    
+    ];
+B1=[12 ; -330];
+X1=A1\B1;
+TNEW=X(2);  
