@@ -1,0 +1,9 @@
+yO=[7.6421e+06 137 7.6421e+06  137]';
+y=fsolve(@(y) Assignment4a(y), yO);
+%if N1<2100 then this v1 is the right velocity.
+N1 = y(1);
+v1 = y(2);
+%else then this v2 is the right velocity.
+ N2=  y(3);
+ v2 = y(4);
+%as we can see in this question second v2 is the correct answer(171.0302)
